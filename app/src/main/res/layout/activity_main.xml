@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <FrameLayout
+        android:id="@+id/camera_preview"
+        android:layout_width="288dp"
+        android:layout_height="460dp"
+        android:layout_alignParentLeft="true"
+        />
+
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="576dp"
+        android:layout_toRightOf="@id/camera_preview">
+
+        <TableRow>
+            <TextView
+                android:id="@+id/camera_status"
+                android:text="@string/camera_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id = "@+id/acctitle"
+                android:text="@string/acc_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/acc_xcoor"
+                android:text="@string/acc_x"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/acc_ycoor"-->
+                <!--android:text="@string/acc_y"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</TableRow>-->
+
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/acc_zcoor"-->
+                <!--android:text="@string/acc_z"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</TableRow>-->
+
+        <TableRow>
+            <TextView
+                android:id = "@+id/gyrotitle"
+                android:text="@string/gyro_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/gyro_xcoor"
+                android:text="@string/gyro_x"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </TableRow>
+
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/gyro_ycoor"-->
+                <!--android:text="@string/gyro_y"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</TableRow>-->
+
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/gyro_zcoor"-->
+                <!--android:text="@string/gyro_z"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</TableRow>-->
+
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/rotationmatrixtitle"-->
+                <!--android:text="@string/rotation_change_title"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</TableRow>-->
+
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/rotationmatrixrow1"-->
+                <!--android:text="@string/square_brackets"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</TableRow>-->
+
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/rotationmatrixrow2"-->
+                <!--android:text="@string/square_brackets"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</TableRow>-->
+
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/rotationmatrixrow3"-->
+                <!--android:text="@string/square_brackets"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</TableRow>-->
+
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/rotationsensortitle"-->
+                <!--android:text="@string/rotation_sensor_title"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</TableRow>-->
+
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/rotationsensormatrixrow1"-->
+                <!--android:text="@string/square_brackets"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</TableRow>-->
+
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/rotationsensormatrixrow2"-->
+                <!--android:text="@string/square_brackets"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</TableRow>-->
+
+        <!--<TableRow>-->
+            <!--<TextView-->
+                <!--android:id="@+id/rotationsensormatrixrow3"-->
+                <!--android:text="@string/square_brackets"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</TableRow>-->
+
+    </TableLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/button_capture"
+            android:text="@string/button_capture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+        <Button
+            android:id="@+id/button_stop"
+            android:text="@string/button_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+    <Button
+        android:id="@+id/button_camera_capture"
+        android:text="@string/button_camera_capture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:id="@+id/button_camera_stop"
+        android:text="@string/button_camera_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:id="@+id/button_sensor_capture"
+        android:text="@string/button_sensor_capture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:id="@+id/button_sensor_stop"
+        android:text="@string/button_sensor_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+    </LinearLayout>
+</RelativeLayout>

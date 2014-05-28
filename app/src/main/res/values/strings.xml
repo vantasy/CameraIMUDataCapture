@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Data Capture</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!--camera: -->
+    <string name = "camera_status">Camera Status :</string>
+
+    <!--accelerometer-->
+    <string name = "acc_title">Accelerometer Output: </string>
+    <string name = "acc_x">  ACC : </string>
+    <!--<string name = "acc_y">  ACC Y Coordinate: </string>-->
+    <!--<string name = "acc_z">  ACC Z Coordinate: </string>-->
+
+    <!--Gyroscope-->
+    <string name = "gyro_title">  Gyroscope Output: </string>
+    <string name = "gyro_x">  GYRO </string>
+    <!--<string name = "gyro_y">  GYRO Y Coordinate: </string>-->
+    <!--<string name = "gyro_z">  GYRO Z Coordinate: </string>-->
+
+    <string name = "square_brackets">[ ]</string>
+
+    <!--Rotation Change Matrix-->
+    <string name = "rotation_change_title">Rotation change in matrix:</string>
+
+    <!--Rotation Sensor-->
+    <string name = "rotation_sensor_title">Rotation sensor output:</string>
+
+    <!--Button-->
+    <string name = "button_capture">Capture</string>
+    <string name = "button_stop">Stop</string>
+    <string name = "button_camera_capture">C Capture</string>
+    <string name = "button_camera_stop">C Stop</string>
+    <string name = "button_sensor_stop">S Stop</string>
+    <string name = "button_sensor_capture">S Capture</string>>
+
+</resources>
