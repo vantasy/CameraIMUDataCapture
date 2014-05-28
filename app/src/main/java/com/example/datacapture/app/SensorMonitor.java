@@ -55,9 +55,10 @@ public class SensorMonitor implements SensorEventListener{
     private Handler sensorHandler;
 
 
-    private float[] accOutput           = new float[3];     // 加速度计变量
-    private float[] gyroOutput          = new float[3];     // 陀螺仪变量
-    private float[] rotatonsensorOutput = new float[4];     // 旋转向量变量
+    private float[] accOutput                   = new float[3];     // 加速度计变量
+    private float[] gyroOutput                  = new float[3];     // 陀螺仪变量
+    private float[] rotationVectorQuaternion    = new float[4];     // 旋转向量四元数
+    private float[] rotationVectorMatrix        = new float[9];     // 旋转向量矩阵
 
     // 文件
     private static File sensorDir = null;
@@ -97,7 +98,7 @@ public class SensorMonitor implements SensorEventListener{
 
         mSensorManager.registerListener(this, mAccelerometer , SensorManager.SENSOR_DELAY_FASTEST);
         mSensorManager.registerListener(this, mGyroscope , SensorManager.SENSOR_DELAY_FASTEST);
-        mSensorManager.registerListener(this, mRotationSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager.registerListener(this, mRotationSensor, SensorManager.SENSOR_DELAY_FASTEST);
 
         timerSensorCapture = new Timer();
         timerSensorCapture.schedule(new sensorCaptureThread(), 500, MainActivity.sensorCaptureFPS);
@@ -143,10 +144,20 @@ public class SensorMonitor implements SensorEventListener{
         accText.setText("Output #" + count + "\n" + accOutput[0] + " " + accOutput[1] + " " + accOutput[2] + "\n@ time " + accTimestamp + "ms");
         gyroText.setText("Output #" + count + "\n" + gyroOutput[0] + " " + gyroOutput[1] + " " + gyroOutput[2] + "\n@ time " + gyroTimestamp + "ms");
 
+
         logTimestamp = System.currentTimeMillis() - startTimestamp;
         try{
-            sensorFOS.write((count + " " + accOutput[0] + " " + accOutput[1] + " " + accOutput[2] + " " +  accTimestamp + " " + gyroOutput[0] + " " + gyroOutput[1] + " " + gyroOutput[2] + " " + gyroTimestamp + " " + logTimestamp + "\n").getBytes());
+
+            sensorFOS.write( (count + " ").getBytes() );
+            sensorFOS.write( (accOutput[0] + " " + accOutput[1] + " " + accOutput[2] + " " +  accTimestamp + " ").getBytes() );
+            sensorFOS.write( (gyroOutput[0] + " " + gyroOutput[1] + " " + gyroOutput[2] + " " + gyroTimestamp + " ").getBytes() );
+            sensorFOS.write( (rotationVectorMatrix[0] + " " + rotationVectorMatrix[1] + " " + rotationVectorMatrix[2] + " ").getBytes() );
+            sensorFOS.write( (rotationVectorMatrix[3] + " " + rotationVectorMatrix[4] + " " + rotationVectorMatrix[5] + " ").getBytes() );
+            sensorFOS.write( (rotationVectorMatrix[6] + " " + rotationVectorMatrix[7] + " " + rotationVectorMatrix[8] + " ").getBytes() );
+            sensorFOS.write( (rotationTimestamp + " " + logTimestamp + "\n").getBytes());
+
             sensorFOS.flush();
+
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -182,30 +193,40 @@ public class SensorMonitor implements SensorEventListener{
         return sensorFile;
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     @Override
     public void onSensorChanged(SensorEvent event){
 
-        if(event.sensor.getType()==Sensor.TYPE_ACCELEROMETER) {
-
-            accOutput = event.values.clone();
+        if(event.sensor.getType()==Sensor.TYPE_ACCELEROMETER)
+        {
             accTimestamp = System.currentTimeMillis() - startTimestamp;
-
+            accOutput = event.values.clone();
         }
 
         if (event.sensor.getType() == Sensor.TYPE_GYROSCOPE)
         {
 
-            gyroOutput = event.values.clone();
             gyroTimestamp = System.currentTimeMillis() - startTimestamp;
+            gyroOutput = event.values.clone();
+
         }
 
-//        if (event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR)
-//        {
-//
-//            rotatonsensorOutput = event.values.clone();
-//            rotationTimestamp = System.currentTimeMillis() - startTimestamp;
-//
-//        }
+        if (event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR)
+        {
+
+            rotationTimestamp = System.currentTimeMillis() - startTimestamp;
+            SensorManager.getQuaternionFromVector(rotationVectorQuaternion,event.values);
+
+            float temp;
+            temp = rotationVectorQuaternion[0];
+
+            rotationVectorQuaternion[0] = rotationVectorQuaternion[1];
+            rotationVectorQuaternion[1] = rotationVectorQuaternion[2];
+            rotationVectorQuaternion[2] = rotationVectorQuaternion[3];
+            rotationVectorQuaternion[3] = temp;
+
+            SensorManager.getRotationMatrixFromVector(rotationVectorMatrix,rotationVectorQuaternion);
+        }
 
     }
 
