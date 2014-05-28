@@ -11,8 +11,8 @@ For image capturing:
 
 For inertial sensor output capturing:
 
-+ Accelerometer output 
-+ Gyroscope output
++ Accelerometer output every 50ms
++ Gyroscope output every 50ms
 
 -------------------------
 
